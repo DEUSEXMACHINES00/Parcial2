@@ -1,0 +1,31 @@
+/*Mensajes error */
+
+.form_error {
+    padding: 3px;    
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/*Loading*/
+.loading{
+    margin: 25px;
+    padding-left: 45%;
+}
+
+/*Checar*/
+
+#botonConsultar{
+    
+    border: none;
+    border-radius: 8px;
+    color: white;
+    width: 50%;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background: #2b7bf3;
+    
+} 

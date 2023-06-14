@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+#Sistemast app backend service
+  parcialapp-back:
+    build:
+      context: ./nodeApp      
+    container_name: parcialapp-back           
+    ports:
+      - 3700:3700 
+#Billin app frontend service
+  parcialapp-front:
+    build:
+      context: ./angularApp      
+    depends_on:     
+      - parcialapp-back 
+#rango de puertos para escalar    
+    ports:
+      - 8080:80 

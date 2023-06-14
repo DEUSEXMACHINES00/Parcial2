@@ -1,0 +1,62 @@
+<h2>Formulario CRUD programación distribuida y paralela</h2>
+
+<h3>Crear / Actualizar</h3>
+<form id="crudForm" #personaForm="ngForm" (ngSubmit)="registrar()">
+
+    <div class="mb-3">
+        <label for="cedula">Cedula:</label>
+        <input type="text" id="cedula" name="cedula" #cedula="ngModel" [(ngModel)]="persona.cedula" required>
+        <span class="form_error" *ngIf="cedula.touched && !cedula.valid">
+            Esta informacion es obligatoria
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="persona.nombre" required>
+        <span class="form_error" *ngIf="nombre.touched && !nombre.valid">
+            Esta informacion es obligatoria
+        </span>
+    </div>
+    <div class="mb-3">
+        <label for="apellido">Apellidos:</label>
+        <input type="text" id="apellido" name="apellido" #apellido="ngModel" [(ngModel)]="persona.apellidos" required>
+        <span class="form_error" *ngIf="apellido.touched && !apellido.valid">
+            Esta informacion es obligatoria
+        </span>
+    </div>
+    <div class="mb-3">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" #edad="ngModel" [(ngModel)]="persona.edad" required>
+        <span class="form_error" *ngIf="edad.touched && !edad.valid">
+            Esta informacion es obligatoria
+        </span>
+    </div>   
+
+    <button type="submit" class="guardar" *ngIf="botonGuardar" [disabled]="!personaForm.form.valid ">Añadir</button>
+    <button  class="btneditar" *ngIf="botonEditar" [disabled]="!personaForm.form.valid " (click)="actualizar()" >Actualizar</button>
+</form>
+
+<h3>Leer / Eliminar</h3>
+<table id="tablaDatos">
+    <thead>
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody id="tablaDatosBody">
+        <tr *ngFor="let persona of personas" >
+            <td>{{persona.cedula}}</td>
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellidos}}</td>
+            <td>{{persona.edad}}</td>
+            <td><button (click)="cargarInfo(persona.cedula)" class="editar">editar</button>
+                <button (click)="eliminar(persona.cedula)" class="eliminar">eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
